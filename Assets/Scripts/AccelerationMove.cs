@@ -1,4 +1,4 @@
-// отдельный класс для ускорения перемещения игрока
+// separate class to speed up the movement of the Player
 
 
 using UnityEngine;

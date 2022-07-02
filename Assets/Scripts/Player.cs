@@ -8,7 +8,7 @@ namespace Asteroids
     {
         [SerializeField] private float _speed;
 
-        // после добавления класса AccelerationMove
+        // appeared after adding the class AccelerationMove
         [SerializeField] private float _acceleration; 
 
         [SerializeField] private float _hp;
@@ -16,46 +16,47 @@ namespace Asteroids
         [SerializeField] private Transform _barrel;
         [SerializeField] private float _force;
 
-        // до переноса перемещения игрока в MoveTransform (теперь в MoveTransform)
-        //private Vector3 _move;
+        // existed before moving the Player's movement functionality to MoveTransform (now in the MoveTransform class)
+        // private Vector3 _move;
 
-        // после переноса перемещения игрока в MoveTransform, замена на private IMove _moveTransform; 
+        // appeared after moving the Player's movement functionality to MoveTransform, replaced by "private IMove _moveTransform;"
         // private MoveTransform _moveTransform;
 
-        // вместо private MoveTransform _moveTransform; после добавления класса AccelerationMove, прожил до добавления класса Ship
+        // appeared instead of "private MoveTransform _moveTransform;" after addition of the AccelerationMove class, lasted until the addition of the Ship class
         // private IMove _moveTransform;
 
-        // после добавления класса RotationShip
+        // appeared after adding the class RotationShip
         private Camera _camera;
-        // после добавления класса RotationShip, прожил до добавления класса Ship
+        // appeared after adding the RotationShip class, lasted until the addition of the Ship class
         // private IRotation _rotation;
 
-        // после добавления класса Ship
+        // appeared after adding the Ship class
         private Ship _ship;
 
 
         private void Start()
         {
-            // появился после переноса перемещения игрока в MoveTransform и прожил до добавления класса AccelerationMove
+            // appeared after moving the Player's movement functionality to MoveTransform, lasted until the addition of the AccelerationMove class
             // _moveTransform = new MoveTransform(transform, _speed);
 
-            // появился после добавления класса AccelerationMove, после добавления класса Ship левую часть (_moveTransform) изменили на var moveTransform
+            // appeared after adding the AccelerationMove class, after adding the Ship class left part "_moveTransform" changed to "var moveTransform"
             var moveTransform = new AccelerationMove(transform, _speed, _acceleration);
 
-            // после добавления класса RotationShip
+            // appeared after adding the RotationShip class
             _camera = Camera.main;
 
-            // появился после добавления класса RotationShip, после добавления класса Ship левую часть (_rotation) изменили на var rotation
+            // appeared after adding the RotationShip class, after adding the Ship class left part "_rotation" changed to "var rotation"
             var rotation = new RotationShip(transform);
 
-            // после добавления класса Ship
+            // appeared after adding the Ship class
             _ship = new Ship(moveTransform, rotation);
         }
 
 
         private void Update()
         {
-            /* до переноса перемещения игрока в MoveTransform
+            /* existed before moving the Player's movement functionality to MoveTransform (now in the MoveTransform class)
+            
             var deltaTime = Time.deltaTime;
             var speed = deltaTime * _speed;
             _move.Set(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical")
@@ -63,19 +64,19 @@ namespace Asteroids
             transform.localPosition += _move;
             */
 
-            // появился после переноса перемещения игрока в MoveTransform, после добавления класса обращение _moveTransform.Move() заменили на _ship.Move()
+            // appeared after moving the Player's movement functionality to MoveTransform, after adding the Ship class part "_moveTransform.Move()" changed to "_ship.Move()"
             _ship.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
 
-            // после добавления класса RotationShip
+            // appeared after adding the RotationShip class
             var direction = Input.mousePosition - _camera.WorldToScreenPoint(transform.position);
-            // появился после добавления класса RotationShip, после добавления класса Ship _rotation.Rotation(direction); заменили на 
+            // appeared after adding the RotationShip class, after adding the Ship class string "_rotation.Rotation(direction);" changed to
             _ship.Rotation(direction);
 
 
-            // после добавления класса AccelerationMove
+            // appeared after adding the AccelerationMove class
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                // после добавления класса Ship данное условие с действием изменили на _ship.AddAcceleration();
+                // after adding the Ship class, condition with the action was changed to "_ship.AddAcceleration();"
                 /*
                 if (_moveTransform is AccelerationMove accelerationMove)
                 {
@@ -86,10 +87,10 @@ namespace Asteroids
 
             }
 
-            // после добавления класса AccelerationMove
+            // appeared after adding the AccelerationMove class
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                // после добавления класса Ship данное условие с действием изменили на _ship.RemoveAcceleration();
+                // after adding the Ship class, condition with the action was changed to "_ship.RemoveAcceleration();"
                 /*
                 if (_moveTransform is AccelerationMove accelerationMove)
                 {

@@ -1,4 +1,4 @@
-// отдельный класс для вращения при перемещения игрока
+// separate class for rotation when the Player moves
 
 using UnityEngine;
 

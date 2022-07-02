@@ -1,5 +1,4 @@
-// создание объекта с помощью комбинирования IMove и IRotation
-// принцип разделения интерфейсов (Interface segregation)
+// creating an object using a combination of IMove and IRotation, by Interface segregation principle
 
 using UnityEngine;
 

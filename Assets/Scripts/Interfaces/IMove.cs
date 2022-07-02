@@ -1,5 +1,4 @@
-// для расширения функционала перемещения игрока (MoveTransform)
-// по принципу открытости закрытости (Open-closed principle)
+// created to expand the movement functionality of the Player (MoveTransform class), according to Open-closed principle
 
 namespace Asteroids
 {

@@ -1,5 +1,4 @@
-// отдельная сущность описывающая вращение игрока
-// по принципу подстановки (Liskov substitution)
+// separate entity describing the rotation of the Player, by Liskov substitution principle
 
 using UnityEngine;
 
