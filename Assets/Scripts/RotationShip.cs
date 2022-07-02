@@ -1,5 +1,3 @@
-// separate class for rotation when the Player moves
-
 using UnityEngine;
 
 namespace Asteroids

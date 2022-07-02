@@ -1,6 +1,3 @@
-// separate class to speed up the movement of the Player
-
-
 using UnityEngine;
 
 namespace Asteroids

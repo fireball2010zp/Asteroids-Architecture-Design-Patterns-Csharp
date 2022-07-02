@@ -1,5 +1,3 @@
-// creating an object using a combination of IMove and IRotation, by Interface segregation principle
-
 using UnityEngine;
 
 namespace Asteroids
