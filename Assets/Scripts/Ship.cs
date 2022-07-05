@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Ship : IMove, IRotation
+    public sealed class Ship : IMove, IRotation
     {
         private readonly IMove _moveImplementation;
         private readonly IRotation _rotationImplementation;
@@ -12,10 +12,17 @@ namespace Asteroids
             _moveImplementation = moveImplementation;
             _rotationImplementation = rotationImplementation;
         }
+        /*
         public void Move(float horizontal, float vertical, float deltaTime)
         {
             _moveImplementation.Move(horizontal, vertical, deltaTime);
         }
+        */
+        public void Move(float x, float y, float z)
+        {
+            _moveImplementation.Move(x, y, z);
+        }
+
         public void Rotation(Vector3 direction)
         {
             _rotationImplementation.Rotation(direction);

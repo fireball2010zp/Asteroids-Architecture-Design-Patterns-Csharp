@@ -2,22 +2,9 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal sealed class Player : MonoBehaviour
+    internal class Player : ViewPlayer
     {
-        [SerializeField] private float _speed;
-
-        [SerializeField] private float _acceleration; 
-
-        [SerializeField] private float _hp;
-        [SerializeField] private Rigidbody2D _bullet;
-        [SerializeField] private Transform _barrel;
-        [SerializeField] private float _force;
-
-        private Camera _camera;
-        
-        private Ship _ship;
-
-        private void Start()
+        public void Start()
         {
             var moveTransform = new AccelerationMove(transform, _speed, _acceleration);
 
@@ -26,10 +13,13 @@ namespace Asteroids
             var rotation = new RotationShip(transform);
 
             _ship = new Ship(moveTransform, rotation);
+
+            _fireAction = new FireAction(_barrel, _force);
+            _damageProcessing = new DamageProcessing(_hp);
         }
 
 
-        private void Update()
+        public void Update()
         {
             _ship.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
 
@@ -49,20 +39,13 @@ namespace Asteroids
 
             if (Input.GetButtonDown("Fire1"))
             {
-                var temAmmunition = Instantiate(_bullet, _barrel.position, _barrel.rotation);
-                temAmmunition.AddForce(_barrel.up * _force);
-            }
+                _fireAction.Fire(_barrel);
+            }  
         }
-        private void OnCollisionEnter2D(Collision2D other)
+
+        public void OnCollisionEnter2D(Collision2D other)
         {
-            if (_hp <= 0)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                _hp--;
-            }
+            _damageProcessing.Damage(_hp);
         }
     }
 }

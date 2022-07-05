@@ -309,6 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079107026}
   - component: {fileID: 1079107027}
+  - component: {fileID: 1079107028}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1079107025}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f8b90d4bc111c4d8f031630d6e0ec0, type: 3}
+  m_Script: {fileID: 11500000, guid: 51e44aa623c0e4d4fabcd54962fda710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0
@@ -349,3 +350,25 @@ MonoBehaviour:
   _bullet: {fileID: 0}
   _barrel: {fileID: 0}
   _force: 0
+  _camera: {fileID: 0}
+--- !u!50 &1079107028
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1079107025}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
