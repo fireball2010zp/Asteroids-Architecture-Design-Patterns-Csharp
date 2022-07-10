@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    public class ViewPlayer
+    public class ViewPlayer : MonoBehaviour
     {
         [SerializeField] public float _speed;
         [SerializeField] public float _acceleration;
@@ -18,7 +18,6 @@ namespace Asteroids
         public FireAction _fireAction;
         public DamageProcessing _damageProcessing;
 
-        public Transform transform;
     }
 }
 
