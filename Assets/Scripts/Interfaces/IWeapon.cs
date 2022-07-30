@@ -1,6 +1,6 @@
 namespace Asteroids
 {
-    internal interface IWeapon
+    public interface IWeapon
     {
         void Fire();
     }
