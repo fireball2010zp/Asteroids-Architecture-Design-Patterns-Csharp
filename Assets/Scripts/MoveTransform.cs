@@ -8,7 +8,7 @@ namespace Asteroids
         public Rigidbody _rigidBody;
         private Vector3 _move;
 
-        public float Speed { get; protected set; }
+        public float Speed { get; set; }
 
         public MoveTransform(Transform transform, float speed)
         {

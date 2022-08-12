@@ -6,7 +6,7 @@ namespace Asteroids.Builder
     {
         [SerializeField] private Sprite _sprite;
 
-
+        
         private void Start()
         {
             var bulletBuilder = new BulletBuilder();
@@ -18,6 +18,6 @@ namespace Asteroids.Builder
                 .Name("Rocket")
                 .Sprite(_sprite);
         }
-
+        
     }
 }
