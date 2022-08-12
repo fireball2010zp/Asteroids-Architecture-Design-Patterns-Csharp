@@ -2,50 +2,62 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    internal class Player : ViewPlayer
+    internal class Player
     {
+        public ViewPlayer camera;
+        public ViewPlayer ship;
+        public ViewPlayer transform;
+        public ViewPlayer speed;
+        public ViewPlayer acceleration;
+        public ViewPlayer barrel;
+        public ViewPlayer force;
+        public ViewPlayer hp;
+
+        public ViewPlayer fireAction;
+        public ViewPlayer damage;
+
         public void Start()
         {
-            var moveTransform = new AccelerationMove(transform, _speed, _acceleration);
+            var moveTransform = new AccelerationMove(transform.transform, speed._speed, acceleration._acceleration);
 
-            _camera = Camera.main;
+            camera._camera = Camera.main;
 
-            var rotation = new RotationShip(transform);
+            var rotation = new RotationShip(transform.transform);
 
-            _ship = new Ship(moveTransform, rotation);
+            ship._ship = new Ship(moveTransform, rotation);
 
-            _fireAction = new FireAction(_barrel, _force);
-            _damageProcessing = new DamageProcessing(_hp);
+            fireAction._fireAction = new FireAction(barrel._barrel, force._force);
+            damage._damageProcessing = new DamageProcessing(hp._hp);
         }
 
 
         public void Update()
         {
-            _ship.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
+            ship._ship.Move(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Time.deltaTime);
 
-            var direction = Input.mousePosition - _camera.WorldToScreenPoint(transform.position);
-            _ship.Rotation(direction);
+            var direction = Input.mousePosition - camera._camera.WorldToScreenPoint(transform.transform.position);
+            ship._ship.Rotation(direction);
 
 
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                _ship.AddAcceleration();
+                ship._ship.AddAcceleration();
             }
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                _ship.RemoveAcceleration();
+                ship._ship.RemoveAcceleration();
             }
 
             if (Input.GetButtonDown("Fire1"))
             {
-                _fireAction.Fire(_barrel);
+                fireAction._fireAction.Fire(barrel._barrel);
             }  
         }
 
         public void OnCollisionEnter2D(Collision2D other)
         {
-            _damageProcessing.Damage(_hp);
+            damage._damageProcessing.Damage(hp._hp);
         }
     }
 }
