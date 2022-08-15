@@ -27,7 +27,7 @@ namespace Asteroids
             ship._ship = new Ship(moveTransform, rotation);
 
             fireAction._fireAction = new FireAction(barrel._barrel, force._force);
-            damage._damageProcessing = new DamageProcessing(hp._hp);
+            damage._damageProcessing = new DamageProcessing(hp._hp, true);
         }
 
 

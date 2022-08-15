@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Asteroids
 {
-    public class TurboJet : IMoveEnemy
+    public sealed class TurboJet : IMoveEnemy
     {
         private readonly Transform _transform;
         public Rigidbody _rigidBody;

@@ -5,7 +5,7 @@ namespace Asteroids
 {
     public class FireAction : IFire
     {
-        private Rigidbody2D _bullet;
+        public Rigidbody2D _bullet;
         private Transform _barrel;
 
         public float Force { get; protected set; }
